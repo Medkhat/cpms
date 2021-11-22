@@ -1,0 +1,16 @@
+version: '3'
+services:
+  technodom-cpms-ui-stage:
+    build: .
+    image: technodom-cpms-ui:stage
+    container_name: technodom-cpms-ui-stage
+    ports:
+    - 80:80
+    volumes:
+    - $PWD/nginx:/etc/nginx
+    - $PWD/nginx/logs:/var/log/nginx
+    - $PWD/nginx/www/html:/usr/share/nginx/html
+    environment:
+      TZ: "Asia/Almaty"
+      REACT_APP_BASE_URL: "https://dragon-api-stage.technodom.kz/api/cpms/v1"
+
